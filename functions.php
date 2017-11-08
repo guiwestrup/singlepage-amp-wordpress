@@ -13,7 +13,14 @@
         return $template;
     }
 // Fim do template para AMP
+//Função para limpar as tags html do content
+function limpa_amp($amp)
+{
 
+    $retorno = strip_tags($amp, '<p><img><a>');
+    $retorno = str_replace('<img', '<amp-img layout="responsive"', $retorno);
+    return nl2p($retorno);
+} 
 //Converte quebra de linhas em parágrafos
 function nl2p($string, $line_breaks = false, $xml = true) {
     $string = str_replace(array('<p>', '</p>', '<br>', '<br />'), '', $string);
